@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banking System</title>
+    <style>
+        body { 
+            background-color: #f0f0f0;
+            color: white;
+        }
+        .bank-details {
+            background-color: #0b0b0b;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: 40px auto;
+        }
+        .header {
+            background-color: #2759bc;;
+            color: #571936;
+            padding: 10px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            color: #fff;
+        }
+        .options {
+            padding: 20px;
+        }
+        .options button {
+            background-color: #2759bc;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="bank-details">
+        <div class="header">
+            <h1>Banking System</h1>
+        </div>
+
+        <script>
+            class BankAccount {
+                constructor(accountNumber, name, balance) {
+                    this.accountNumber = accountNumber;
+                    this.name = name;
+                    this.balance = balance;
+                }
+
+                deposit(amount) {
+                    this.balance += amount;
+                    console.log(`Deposited: ${amount}`);
+                    document.write(`Deposited: ${amount}<br>`);
+                }
+
+                withdraw(amount) {
+                    if (this.balance >= amount) {
+                        this.balance -= amount;
+                        console.log(`Withdrawn: ${amount}`);
+                        document.write(`Withdrawn: ${amount}<br>`);
+                    } else {
+                        console.log("Insufficient balance");
+                        document.write("Insufficient balance<br>");
+                    }
+                }
+
+                showBalance() {
+                    console.log(`Account Balance: ${this.balance}`);
+                    document.write(`Account Balance: ${this.balance}<br>`);
+                }
+            }
+
+            let account = new BankAccount(2222222222, "Kikiee", 150000);
+
+            document.write(`A/c No.: ${account.accountNumber}<br>`);
+            document.write(`Account Holder: ${account.name}<br>`);
+            document.write(`Opening Balance: ${account.balance}<br>`);
+
+            let choice;
+
+            do {
+                choice = parseInt(prompt("Press 1 to deposit, 2 to withdraw, 3 to show balance, or 0 to exit"));
+                switch (choice) {
+                    case 1:
+                        let depositAmount = parseInt(prompt("Enter deposit amount: "));
+                        account.deposit(depositAmount);
+                        account.showBalance();
+                        break;
+
+                    case 2:
+                        let withdrawAmount = parseInt(prompt("Enter withdraw amount: "));
+                        account.withdraw(withdrawAmount);
+                        account.showBalance();
+                        break;
+
+                    case 3:
+                        account.showBalance();
+                        break;
+                        case 0:
+                        console.log("Thank you for using our banking system!");
+                        document.write("Thank you for using our banking system!");
+                        break;
+
+                    default:
+                        console.log("Not a valid choice");
+                        document.write("Not a valid choice<br>");
+                }
+            } while (choice != 0);
+        </script>
+
+        <div class="options">
+            <button onclick="account.deposit(parseInt(prompt('Enter deposit amount: ')))">Deposit</button>
+            <button onclick="account.withdraw(parseInt(prompt('Enter withdraw amount: ')))">Withdraw</button>
+            <button onclick="account.showBalance()">Show Balance</button>
+        </div>
+    </div>
+</body>
+</html>

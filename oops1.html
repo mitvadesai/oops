@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oops</title>
+</head>
+<body>
+
+
+<!-- ====================qu-1===================== -->
+
+   <table border="1" cellspacing="5"  cellpadding="10px" style="text-align: center;">
+        <thead>
+            <tr style="font-style: oblique;">
+                <td>Name</td>
+                <td>age</td>
+                <td>Country</td>
+            </tr>
+        </thead>
+
+        <tbody id="tbody" style="font-style: oblique;"></tbody>
+
+    </table>
+
+    <script> 
+         // Define the Person class
+         class Person {
+            constructor(name, age,Country) {
+                this.name = name;
+                this.age = age;
+                this.Country = Country;
+            }
+        }
+
+        // Create an array of Person objects
+        let data = [
+            new Person("xyz", "25", "USA"),
+            new Person("pqr", "20", "IND"),
+          
+        ]; 
+
+         // Get the tbody element 
+        let tbody = document.getElementById("tbody");
+
+        // Add data rows to the table
+        let rows = data.map((person) => {
+        let row = document.createElement("tr");
+           row.innerHTML = `
+            <td>${person.name}</td>
+            <td>${person.age}</td>
+            <td>${person.Country}</td>
+             `;
+            return row;
+            });
+
+        tbody.append(...rows);
+    </script>
+</body>
+</html> 
+
+
